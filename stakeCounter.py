@@ -59,3 +59,5 @@ def determineEpochInfo():
     time_remaining_in_hours = time_remaining_in_seconds / 60 / 60
 
     return (epoch, time_remaining_in_hours)
+
+print(computeActiveStake())
