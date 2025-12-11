@@ -40,7 +40,7 @@ def loop_bot():
             # Purchase Logic
             if stake_diff > 0:
                 decision = 'buy'
-                buy = purchaser.buy_order(random_id)
+                buy = purchaser.buy_order_limit(random_id)
                 if buy == 'HOLD':
                     decision = 'hold'
 
@@ -49,6 +49,7 @@ def loop_bot():
                 sell = purchaser.sell_order(random_id)
                 if sell == 'HOLD':
                     decision = 'hold'
+                    
             else:
                 decision = 'hold'
 
@@ -56,10 +57,10 @@ def loop_bot():
             sql.update_table(decision, epoch, active_stake, random_id)
 
             print(
-            f"🕒 Epoch {epoch} | "
+            f"Epoch {epoch} | "
             f"Active Stake: {active_stake:.2f} | "
             f"Previous Stake: {previous_stake:.2f} | "
-            f"ΔStake: {stake_diff:+.2f} | "
+            f"Stake Diff: {stake_diff:+.2f} | "
             f"Decision: {decision.upper()} | "
             f"Order ID: {random_id}"
         )

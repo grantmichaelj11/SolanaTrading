@@ -60,6 +60,18 @@ def get_most_recent_stake():
 
     return row[0]
 
+def get_all_stats():
+
+    conn = sql.connect('SolanaStake.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM history ORDER BY epoch")
+    row = cursor.fetchall()
+
+    conn.close()
+
+    return row
+
 
 def update_table(buy_sell_hold, epoch, stake, random_id):
 
